@@ -1,0 +1,3 @@
+{
+    "include": ["src/llvm-objcopy.d.ts"]
+}

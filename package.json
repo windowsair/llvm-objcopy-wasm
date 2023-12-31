@@ -2,7 +2,7 @@
     "name": "llvm-objcopy-wasm",
     "repository": "github:windowsair/llvm-objcopy-wasm",
     "description": "A port of llvm-objcopy to WebAssembly",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "module",
     "main": "src/llvm-objcopy.mjs",
     "keywords": [
@@ -10,5 +10,6 @@
       "objcopy",
       "wasm"
     ],
+    "types": "src/llvm-objcopy.d.ts",
     "license": "MIT"
 }
