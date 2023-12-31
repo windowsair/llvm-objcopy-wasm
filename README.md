@@ -2,6 +2,12 @@
 
 A port of llvm-objcopy to WebAssembly.
 
+# Install
+
+```bash
+npm i llvm-objcopy-wasm
+```
+
 # Usage
 
 ```js
