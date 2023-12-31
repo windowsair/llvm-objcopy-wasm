@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert to binary</title>
+</head>
+
+<body>
+    <input id="fileItem" type="file">
+    <script type="module">
+        import Module from '../src/llvm-objcopy.mjs'
+
+        let handle = await Module()
+
+        const readFile = e => {
+            const file = e.target.files[0]
+            let reader = new FileReader()
+
+            reader.onload = async (e) => {
+                let arrayBuffer = new Uint8Array(reader.result)
+                handle.FS.writeFile('/tmp/input', arrayBuffer)
+
+                let exitCode = handle.callMain(['-O', 'binary', '/tmp/input', '/tmp/output'])
+                if (exitCode != 0) {
+                    console.log(`Process exit with code ${exitCode}`)
+                }
+
+                handle.FS.chmod('/tmp/output', 0o777)
+                let resArray = handle.FS.readFile('/tmp/output')
+                const blob = new Blob([resArray], { type: "application/binary" })
+
+                let saveAs = (blob, fileName) => {
+                    const link = document.createElement("a")
+                    link.href = window.URL.createObjectURL(blob)
+                    link.download = fileName
+                    link.click()
+                }
+
+                saveAs(blob, "output.bin")
+            }
+
+            reader.readAsArrayBuffer(file)
+        }
+
+        document.querySelector("#fileItem").onchange = readFile
+    </script>
+</body>
+
+</html>
