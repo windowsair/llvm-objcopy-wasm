@@ -1,0 +1,14 @@
+{
+    "name": "llvm-objcopy-wasm",
+    "repository": "github:windowsair/llvm-objcopy-wasm",
+    "description": "A port of llvm-objcopy to WebAssembly",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "src/llvm-objcopy.mjs",
+    "keywords": [
+      "llvm-objcopy",
+      "objcopy",
+      "wasm"
+    ],
+    "license": "MIT"
+}
