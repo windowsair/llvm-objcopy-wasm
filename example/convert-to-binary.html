@@ -12,14 +12,16 @@
     <script type="module">
         import Module from '../src/llvm-objcopy.mjs'
 
-        let handle = await Module()
-
         const readFile = e => {
             const file = e.target.files[0]
             let reader = new FileReader()
 
             reader.onload = async (e) => {
                 let arrayBuffer = new Uint8Array(reader.result)
+
+                let handle = await Module({
+                    'noInitialRun': true
+                })
                 handle.FS.writeFile('/tmp/input', arrayBuffer)
 
                 let exitCode = handle.callMain(['-O', 'binary', '/tmp/input', '/tmp/output'])
