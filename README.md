@@ -38,4 +38,6 @@ Equivalent command line:
 llvm-objcopy -O binary input outout
 ```
 
-[example/convert-to-binary.html](example/convert-to-binary.html)
+Try it online: [convert-to-binary](https://llvm-objcopy-wasm.vercel.app/example/convert-to-binary.html)
+
+Source code: [example/convert-to-binary.html](example/convert-to-binary.html)
